@@ -3,4 +3,4 @@
 /vendor
 memory::
 composer.lock
-.auto-update.sh
+auto-update.sh
