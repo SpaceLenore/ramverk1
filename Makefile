@@ -123,6 +123,13 @@ test: phpunit phpcs phpmd phploc behat shellcheck bats
 	composer validate
 
 
+# target: convenient-test                    - clear cache, run test and clear it again
+.PHONY: convenient-test
+convenient-test:
+	@$(call HELPTEXT,$@)
+	rm -rf cache/*/*
+	make test
+	rm -rf cache/*/*
 
 # target: doc                     - Generate documentation.
 .PHONY:  doc
