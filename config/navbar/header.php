@@ -34,6 +34,16 @@ return [
             ],
         ],
         [
+            "text" => "IP-Checker tool",
+            "url" => "ip",
+            "title" => "Check if an ip is valid and what it's domain is",
+        ],
+        [
+            "text" => "IP-CT API",
+            "url" => "ip/api",
+            "title" => "API DOCS",
+        ],
+        [
             "text" => "Om",
             "url" => "om",
             "title" => "Om denna webbplats.",

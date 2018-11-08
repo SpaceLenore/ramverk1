@@ -149,6 +149,18 @@ pre {
   border-radius: 5px;
   color: #d8dee9;
 }
+.ip-box {
+  padding: 1em;
+  border: 2px solid;
+}
+.ip-box.invalid {
+  background: rgba(193, 57, 43, 0.5);
+  border-color: #c0392b;
+}
+.ip-box.valid {
+  background: rgba(46, 204, 113, 0.5);
+  border-color: #2ecc71;
+}
 .block {
   padding: 0.5rem;
 }
