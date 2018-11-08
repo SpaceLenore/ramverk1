@@ -1,0 +1,255 @@
+/*!
+ * The stylesheet that rise at dawn
+ *
+ * Stylesheet for dbwebb
+ * course ramverk1
+ * 2018-11
+ */
+
+// Colors
+
+@primaryBgColor: #2f2f45;
+@secondaryBgColor: #353e53;
+@primaryFgColor: #eceff4;
+@alternativeFgColor: #d8dee9;
+@primaryLinkColor: #b48ead;
+@secondaryLinkColor: #bf616a;
+
+@blGrStart: #5e81ac;
+@blGrEnd: rgba(0,0,0,0);
+@primaryBorderColor: #88c0d0;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: @primaryBgColor;
+    color: @primaryFgColor;
+    // HACK: 100%
+}
+
+a {
+    color: @primaryLinkColor;
+    text-decoration: none;
+}
+
+a:hover {
+    color: @primaryLinkColor;
+    text-decoration: underline !important;
+}
+
+a:active {
+    color: @secondaryLinkColor;
+    text-decoration: underline !important;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.region-flash-message {
+    background: @blGrStart;
+    padding: 0 0.5em;
+    border-left: 5px solid @primaryBorderColor;
+}
+
+.wrap-header {
+    background: url('../image/flash-header.png?w=1600&h=500&crop-to-fit&area=0,0,0,0');
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+.super-main-wrap {
+    padding: 3em 0;
+}
+
+.outer-wrap-footer {
+    padding: 1em;
+    background: @secondaryBgColor;
+}
+
+.region-navbar {
+    width: 100%;
+    .navbar {
+        width: 100%;
+        display: flex;
+        a {
+            margin: auto;
+            color: @secondaryLinkColor;
+        }
+        a:hover {
+            color: @primaryLinkColor;
+        }
+    }
+}
+
+.region-header-col-1 {
+    padding: 2em 0 4em 0;
+    font-size: 2em;
+    text-align: center;
+    .site-logo-text {
+        a {
+            font-family: sans-serif;
+            text-decoration: none;
+            color: @primaryLinkColor;
+            font-weight: bold;
+        }
+        a:hover {
+            color: @secondaryLinkColor;
+        }
+    }
+}
+
+.selected {
+    a {
+    color: @secondaryLinkColor;
+    }
+    a:active {
+        text-decoration: none;
+        color: @secondaryLinkColor;
+        font-weight: bold;
+    }
+}
+
+.level-0 {
+    a {
+        color: @primaryLinkColor;
+        text-decoration: none;
+    }
+}
+
+.level-1, .level-2 {
+    padding-left: 10px !important;
+    a {
+        color: @primaryLinkColor;
+        text-decoration: none;
+    }
+}
+
+.section-header a {
+    color: @primaryLinkColor;
+    font-weight: bold;
+}
+
+.selected {
+    a {
+        color: @secondaryLinkColor;
+        text-decoration: none;
+        font-weight: bold !important;
+    }
+}
+
+.breadcrumb-list {
+    margin-top: 2em;
+    margin-bottom: 0;
+    padding: 0;
+    ul {
+        list-style: none;
+        li {
+            display: inline;
+            a {
+                color: @primaryLinkColor;
+            }
+        }
+    }
+
+    ul li::after {
+        content: " » ";
+    }
+}
+
+figure {
+    padding: 5px;
+    background: @secondaryBgColor;
+    box-shadow: 3px 3px 5px darken(@primaryBgColor, 8%);
+    figcaption {
+        padding: 3px;
+        font-style: italic;
+        color: @blGrStart;
+        p {
+            margin: 0;
+        }
+    }
+}
+
+code {
+    background: darken(@primaryBgColor, 5%);
+    padding: 3px;
+    border: none;
+    border-radius: 3px;
+}
+
+pre {
+    background: darken(@primaryBgColor, 5%);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: @alternativeFgColor;
+}
+
+.block {
+    padding: 0.5rem;
+}
+
+.block .toc {
+    margin: 1rem;
+    list-style: none;
+}
+
+.region-sidebar-left {
+    width: 20%;
+}
+
+.has-sidebar-left {
+    &.region-main {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.has-sidebar-right {
+    &.region-main {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.region-sidebar-right {
+    width: 20%;
+}
+
+.next-previous {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    .next, .previous {
+        padding: 0.5em;
+        a {
+            color: @primaryLinkColor;
+        }
+    }
+}
+
+.outer-wrap-footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    .footer-column {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        &.block {
+            flex-direction: column;
+            padding: 1em;
+        }
+    }
+}
+
+.site-copyright {
+    margin: auto;
+}

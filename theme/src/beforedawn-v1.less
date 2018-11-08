@@ -1,0 +1,204 @@
+/*!
+* Before Dawn v1 A flat and modern theme
+*/
+
+/**
+ * Normalize and reset the style.
+ */
+@import "normalize.css/normalize.less";
+
+/**
+ * Font Awesome.
+ */
+@import "@fortawesome/fontawesome-free/less/fontawesome.less";
+@import "@fortawesome/fontawesome-free/less/solid.less";
+@import "@fortawesome/fontawesome-free/less/brands.less";
+
+
+/**
+ * Mixins within the namespace #desinax-mixin.
+ * @TODO clean up what mixins are used
+ */
+@import "@desinax/mixin/less/clearfix.less";
+@import "@desinax/mixin/less/mixins.less";
+@import "@desinax/mixin/less/css3mixins.less";
+
+.clearfix() {
+    #desinax-mixin.clearfix();
+}
+
+/**
+ * Vertical grid
+ */
+@import "@desinax/vertical-grid/less/grid.less";
+
+html.vgrid .inner-wrap {
+    @gridImage: "../img/theme/grid950x24x30x10-nomargin.png";
+    #desinax-vgrid.showGrid(1100px, @gridImage);
+
+    &.inner-wrap-header {
+        #desinax-vgrid.showGrid(100%, @gridImage);
+    }
+}
+
+/**
+ * Typographic grid in namespace #desinax-hgrid.
+ */
+@import "@desinax/typographic-grid/less/typography.less";
+
+html.hgrid .inner-wrap {
+    @gridImage: "../img/theme/magic-number-24.png";
+    #desinax-hgrid.showGrid(@gridImage);
+}
+
+// // Cleanup theses
+@anchorColor:         #b48ead;
+@anchorColor2:        #bf616a;
+@anchorColorHover:    #bf616a;
+@anchorColorActive:   #bf616a;
+@anchorColorVisited:  #b48ead;
+
+@anchorColorAnonymous:      @colorBody;
+@anchorColorAnonymousHover: #b48ead;
+
+
+@bgcolor: #2f2f45;
+@blGrStart: #5e81ac;
+@blGrEnd: rgba(0,0,0,0);
+@linkColor: #b48ead;
+
+/**
+ * Base style to affect HTML elements on a general scale.
+ */
+@import "base/base.less";
+
+/**
+ * Layout style for general structure of header, navbar, main, footer
+ * and other regions of the page including route specific styles.
+ */
+@import "layout/layout_v2.less";
+@import "layout/dbwebb-se_v2.less"; // Rearrange and move classic style to layout.less
+@import "layout/regions.less";
+
+body {
+    background: @bgcolor;
+    color: #eceff4;
+}
+
+code {
+    background: darken(@bgcolor, 5%);
+    padding: 3px;
+    border: none;
+    border-radius: 3px;
+}
+
+a {
+    color: @linkColor;
+}
+
+a:active, a:hover {
+    color: #bf616a;
+}
+
+.selected {
+    color: #bf616a;
+}
+
+.selected a {
+    color: #bf616a;
+}
+
+.toc {
+    list-style: none;
+}
+
+.section-header a {
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+.level-1, .level-1 a, .level-2, .level-2 a {
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+.wrap-sidebar .block h4 {
+    background-image: linear-gradient(to right, @blGrStart, @blGrEnd) !important;
+    padding-left: 3px;
+    border: none !important;
+    border-left: 3px solid #88c0d0 !important;
+}
+
+.row {
+    width: auto;
+    margin: 0  !important;
+    padding: 0 !important;
+    box-sizing: initial;
+}
+
+.rm-navbar {
+    // text-align: center;
+    font-family: @fontFamilyCambria;
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.region-header-col-1 {
+    margin: 0;
+}
+
+.hfix {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 250px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: none;
+}
+
+.rm-default a {
+    padding: 0.5em;
+}
+
+.outer-wrap-header {
+    background-image: linear-gradient(to right, #fed6cb, #ffdfd9, #ffd6cd);
+    margin-bottom: 0;
+    color: #666;
+}
+
+.rm-desktop li ul {
+    background-color: #fff;
+}
+
+//This rule remains unidentified
+.wrap-sidebar .block h4 {
+    border-top: 1px solid #ccc;
+    background-image: linear-gradient(to right, #fff, #ccc);
+}
+
+.inner-wrap-flash {
+    // top: -100px;
+    max-width: 100%;
+    margin: 0;
+}
+.region-flash {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+    padding: 0 !important;
+    height: 400px;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    img {
+        min-width: 100%;
+    }
+}
+
+.outer-wrap-footer {
+    background-color: #353e53;
+}
