@@ -57,4 +57,81 @@ class SampleControllerTest extends TestCase
         $this->assertContains("request", $res);
         $this->assertContains("response", $res);
     }
+
+    /**
+    * Test the createActionGet
+    */
+    public function testCreateActionGet()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->createActionGet();
+        $this->assertContains("db is active", $res);
+    }
+
+    /**
+    * Test the createActionGet
+    */
+    public function testCreateActionPost()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->createActionPost();
+        $this->assertContains("db is active", $res);
+    }
+
+    /**
+    * test the argumentActionGet
+    */
+    public function testArgumentActionGet()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->argumentActionGet("hej");
+        $this->assertContains("db is active, got argument 'hej'", $res);
+    }
+
+    /**
+    * test the defaultArgumentActionGet
+    */
+    public function testDefaultArgumentActionGet()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->defaultArgumentActionGet();
+        $this->assertContains("db is active, got argument 'default'", $res);
+    }
+
+    /**
+    * test the typedArgumentActionGet
+    */
+    public function testTypedArgumentActionGet()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->typedArgumentActionGet('hej', 123);
+        $this->assertContains("db is active, got string argument 'hej' and int argument '123'.", $res);
+    }
+
+    /**
+    * test the variadicActionGet
+    */
+    public function testVariadicActionGet()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->variadicActionGet('unit', 1, 'test', 'hope-this-passes');
+        $this->assertContains("db is active, got '4' arguments: unit, 1, test, hope-this-passes", $res);
+    }
+
+    /**
+    * test the catchAll
+    */
+    public function testCatchAll()
+    {
+        $controller = new SampleController();
+        $controller->initialize();
+        $res = $controller->catchAll();
+        $this->assertEquals(null, $res);
+    }
 }

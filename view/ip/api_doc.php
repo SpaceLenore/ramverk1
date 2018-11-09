@@ -1,7 +1,7 @@
 <h1>IP-Checker tool API</h1>
 
 <p>
-    The api can be reached on the <a href="#">ip-api/</a> route
+    The api can be reached on the <a href="../ip-api">ip-api/</a> route
     with a <code>POST</code> request sending the ip as the POST-Parameter <code>ip</code>
     <br><br>
     Here are a few example links:
