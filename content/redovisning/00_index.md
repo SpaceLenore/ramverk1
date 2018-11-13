@@ -3,4 +3,5 @@
 Redovisningstexter
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/redovisning/00_index.md`.
+Detta är min samling med redovisningstexter för kursen Ramverk1, klicka dig vidare
+till nästa eller välj ett ur listan här intill.
