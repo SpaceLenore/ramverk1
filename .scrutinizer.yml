@@ -5,7 +5,8 @@ filter:
     excluded_paths: [vendor/*, test/*, examples/*]
 
 build:
-
+    environment:
+            php: 7.2
     dependencies:
         before:
             -
