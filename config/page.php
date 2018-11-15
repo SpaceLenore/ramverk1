@@ -22,7 +22,6 @@ return [
                 "css/horizon.min.css",
             ],
             "javascripts" => [
-                "js/responsive-menu.js",
                 "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js",
             ],
         ],
