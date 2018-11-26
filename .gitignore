@@ -4,4 +4,3 @@
 memory::
 composer.lock
 auto-update.sh
-/config/api_tokens.php

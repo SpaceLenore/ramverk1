@@ -3,6 +3,7 @@
 namespace Anax\Connectors;
 
 use Anax\Common\CurlHandler;
+use Anax\Config\ApiTokens;
 /**
 * Connector class for the ipstack api
 */
@@ -13,9 +14,10 @@ class IpstackConnector
     * Function to get config from path
     * @param configPath path for the config that's loaded
     */
-    function getConfig ($configPath)
+    function getConfig ()
     {
-        return include($configPath);
+        $tokens = new ApiTokens();
+        return $tokens->getApiTokens();
     }
 
     /**
@@ -23,11 +25,11 @@ class IpstackConnector
     * @param ip the ip address to be checked
     * @param configPath path for the config that's loaded
     */
-    function fetchIpData ($ip, $configPath)
+    function fetchIpData ($ip)
     {
         $curl = new CurlHandler();
         //Load key from configuration
-        $keys = $this->getConfig($configPath);
+        $keys = $this->getConfig();
         $access_key = $keys['ipstack'];
         $address = 'http://api.ipstack.com/' . $ip . '?access_key=' . $access_key;
         $jsonResponse = $curl->JsonCurl($address);

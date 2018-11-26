@@ -29,7 +29,7 @@ class IpGeoWebController implements ContainerInjectableInterface
      * @var string $db a sample member variable that gets initialised
      */
     private $db = "not active";
-
+    private $ipstack;
 
 
     /**
@@ -77,19 +77,16 @@ class IpGeoWebController implements ContainerInjectableInterface
     public function ipAction($ipin) : object
     {
         $title = "IP Check tool: result";
-
-        $request = $this->di->get("request");
         $page = $this->di->get("page");
 
         $ipaddr = $ipin;
-        $isValid;
+        $isValid = "unknown";
         $domain = "";
 
         if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {
             $isValid = "valid";
             $domain = gethostbyaddr($ipaddr);
-            $configPath = __DIR__ . "/../../config/api_tokens.php";
-            $geodata = $this->ipstack->fetchIpData($ipaddr, $configPath);
+            $geodata = $this->ipstack->fetchIpData($ipaddr);
         } else {
             $isValid = "invalid";
             $domain = "";

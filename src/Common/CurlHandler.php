@@ -14,7 +14,7 @@ class CurlHandler
     * Basic funtction for executing a curl command.
     * @param $url string: the url to curl in its complete from
     */
-    function BasicCurl ($url)
+    public function BasicCurl ($url)
     {
         //Make sure url is set
         if (isset($url)) {
@@ -39,7 +39,7 @@ class CurlHandler
     * Json Curl funtction for executing a curl command and returning the respose in json.
     * @param $url string: the url to curl in its complete from
     */
-    function JsonCurl ($url)
+    public function JsonCurl ($url)
     {
         //Make sure url is set
         if (isset($url) && $url != "") {

@@ -21,7 +21,7 @@ class IpGeoRestController implements ContainerInjectableInterface
      * @var string $db a sample member variable that gets initialised
      */
     private $db = "not active";
-
+    private $ipstack;
 
     public function initialize() : void
     {
@@ -47,14 +47,13 @@ class IpGeoRestController implements ContainerInjectableInterface
         $request = $this->di->get("request");
 
         $ipaddr = $ipaddr;
-        $isValid;
+        $isValid = "unknown";
         $domain = "";
 
         if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {
             $isValid = "valid";
             $domain = gethostbyaddr($ipaddr);
-            $configPath = __DIR__ . "/../../config/api_tokens.php";
-            $geodata = $this->ipstack->fetchIpData($ipaddr, $configPath);
+            $geodata = $this->ipstack->fetchIpData($ipaddr);
         } else {
             $isValid = "invalid";
             $domain = "";
