@@ -41,10 +41,10 @@ class IpGeoWebControllerTest extends TestCase
 
     public function testIpActionSuccess()
     {
-        $res = $this->controller->ipAction("1.1.1.1");
-        $exp = "is a valid ip-address";
+        $ipaddr = "1.1.1.1";
+        $res = $this->controller->ipAction($ipaddr);
         $body = $res->getBody();
-        $this->assertContains($exp, $body);
+        $this->assertContains($ipaddr, $body);
     }
 
     public function testIpActionFail()
