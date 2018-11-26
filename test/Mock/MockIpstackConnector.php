@@ -2,8 +2,6 @@
 use PHPUnit\Framework\TestCase;
 use Anax\IpController\IpGeoWebController;
 
-
-
 class StubTest extends TestCase
 {
     public function testStub()
@@ -13,9 +11,7 @@ class StubTest extends TestCase
 
         // Configure the stub.
         $stub->method('ipAction')
-             ->willReturn([
-                "ip" => "1.1.1.1"
-            ]);
+             ->willReturn(["ip" => "1.1.1.1"]);
 
         // Calling $stub->doSomething() will now return
         // 'foo'.

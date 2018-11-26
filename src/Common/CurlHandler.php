@@ -2,7 +2,6 @@
 
 namespace Anax\Common;
 
-
 /**
 * A Class for sending curl requests and getting back the data.
 * This class should probably be implemented from a specific interface
@@ -14,7 +13,7 @@ class CurlHandler
     * Basic funtction for executing a curl command.
     * @param $url string: the url to curl in its complete from
     */
-    public function BasicCurl ($url)
+    public function basicCurl($url)
     {
         //Make sure url is set
         if (isset($url)) {
@@ -39,7 +38,7 @@ class CurlHandler
     * Json Curl funtction for executing a curl command and returning the respose in json.
     * @param $url string: the url to curl in its complete from
     */
-    public function JsonCurl ($url)
+    public function jsonCurl($url)
     {
         //Make sure url is set
         if (isset($url) && $url != "") {
