@@ -18,10 +18,9 @@ use Anax\Commons\ContainerInjectableTrait;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class IpWebController implements ContainerInjectableInterface
+class MockIpGeoWebController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
-
 
 
     /**
@@ -45,69 +44,20 @@ class IpWebController implements ContainerInjectableInterface
     }
 
 
-
-    /**
-     * GET route for ip checker tool, displays a form
-     *
-     * @return object
-     */
-    public function indexActionGet() : object
-    {
-        $title = "IP Check tool";
-
-        $page = $this->di->get("page");
-
-        $page->add("ip/form", []);
-
-        return $page->render([
-            "title" => $title,
-        ]);
-    }
-
     /**
      * POST route for ip checker tool, displays the result
      *
      * @return object
      */
-    public function indexActionPost() : object
+    public function ipAction($ipin) : object
     {
-        $title = "IP Check tool: result";
-
-        $request = $this->di->get("request");
-        $page = $this->di->get("page");
-
-        $ipaddr = $request->getPost("ip");
-        $isValid = "";
-        $domain = "";
-
-        if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {
-            $isValid = "valid";
-            $domain = gethostbyaddr($ipaddr);
-        } else {
-            $isValid = "invalid";
-        }
-
-        $page->add("ip/result", [
-            "ip" => $ipaddr,
-            "valid" => $isValid,
-            "domain" => $domain
-        ]);
-
-        return $page->render([
-            "title" => $title,
-        ]);
+        return (object)[
+            "ip" => $ipin
+        ];
     }
 
-    public function apiActionGet() : object
+    public function apiAction()
     {
-        $title = "IP Check tool API";
-
-        $page = $this->di->get("page");
-
-        $page->add("ip/api_doc", []);
-
-        return $page->render([
-            "title" => $title,
-        ]);
+        return "<title>IP Geo API Docs";
     }
 }

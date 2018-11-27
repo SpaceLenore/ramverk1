@@ -45,6 +45,16 @@ return [
             "title" => "API DOCS",
         ],
         [
+            "text" => "IP-Geo tool",
+            "url" => "geoip",
+            "title" => "Get geo data from ip",
+        ],
+        [
+            "text" => "IP-Geo API",
+            "url" => "geoapi",
+            "title" => "Geo data API",
+        ],
+        [
             "text" => "Om",
             "url" => "om",
             "title" => "Om denna webbplats.",

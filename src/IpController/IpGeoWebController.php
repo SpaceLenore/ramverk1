@@ -5,6 +5,8 @@ namespace Anax\IpController;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
+use Anax\Connectors\IpstackConnector;
+
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
 // use Anax\Route\Exception\InternalErrorException;
@@ -18,17 +20,16 @@ use Anax\Commons\ContainerInjectableTrait;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class IpWebController implements ContainerInjectableInterface
+class IpGeoWebController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
-
 
 
     /**
      * @var string $db a sample member variable that gets initialised
      */
     private $db = "not active";
-
+    private $ipstack;
 
 
     /**
@@ -42,6 +43,7 @@ class IpWebController implements ContainerInjectableInterface
     {
         // Use to initialise member variables.
         $this->db = "active";
+        $this->ipstack = new IpstackConnector();
     }
 
 
@@ -51,13 +53,16 @@ class IpWebController implements ContainerInjectableInterface
      *
      * @return object
      */
-    public function indexActionGet() : object
+    public function indexAction() : object
     {
-        $title = "IP Check tool";
+        $title = "IP Geo Data tool";
 
         $page = $this->di->get("page");
 
-        $page->add("ip/form", []);
+
+        $page->add("geo/form", [
+            "default_ip" => $_SERVER['REMOTE_ADDR'],
+        ]);
 
         return $page->render([
             "title" => $title,
@@ -69,28 +74,30 @@ class IpWebController implements ContainerInjectableInterface
      *
      * @return object
      */
-    public function indexActionPost() : object
+    public function ipAction($ipin) : object
     {
         $title = "IP Check tool: result";
-
-        $request = $this->di->get("request");
         $page = $this->di->get("page");
 
-        $ipaddr = $request->getPost("ip");
-        $isValid = "";
+        $ipaddr = $ipin;
+        $isValid = "unknown";
         $domain = "";
 
         if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {
             $isValid = "valid";
             $domain = gethostbyaddr($ipaddr);
+            $geodata = $this->ipstack->fetchIpData($ipaddr);
         } else {
             $isValid = "invalid";
+            $domain = "";
+            $geodata = "";
         }
 
-        $page->add("ip/result", [
+        $page->add("geo/result", [
             "ip" => $ipaddr,
             "valid" => $isValid,
-            "domain" => $domain
+            "domain" => $domain,
+            "geodata" => $geodata,
         ]);
 
         return $page->render([
@@ -98,13 +105,13 @@ class IpWebController implements ContainerInjectableInterface
         ]);
     }
 
-    public function apiActionGet() : object
+    public function apiAction()
     {
-        $title = "IP Check tool API";
+        $title = "IP Geo API Docs";
 
         $page = $this->di->get("page");
 
-        $page->add("ip/api_doc", []);
+        $page->add("geo/api_doc", []);
 
         return $page->render([
             "title" => $title,
