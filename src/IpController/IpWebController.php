@@ -77,7 +77,7 @@ class IpWebController implements ContainerInjectableInterface
         $page = $this->di->get("page");
 
         $ipaddr = $request->getPost("ip");
-        $isValid;
+        $isValid = "";
         $domain = "";
 
         if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {

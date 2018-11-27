@@ -69,7 +69,7 @@ class IpRestController implements ContainerInjectableInterface
         $request = $this->di->get("request");
 
         $ipaddr = $request->getPost("ip");
-        $isValid;
+        $isValid = "";
         $domain = "";
 
         if (filter_var($ipaddr, FILTER_VALIDATE_IP)) {
