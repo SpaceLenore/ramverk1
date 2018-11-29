@@ -11,14 +11,21 @@ use Anax\Config\ApiTokens;
 class IpstackConnector
 {
 
-    /**
-    * Function to get config from path
-    * @param configPath path for the config that's loaded
-    */
-    protected function getConfig()
+    private $keys;
+    //
+    // /**
+    // * Function to get config from path
+    // * @param configPath path for the config that's loaded
+    // */
+    // protected function getConfig()
+    // {
+    //     $tokens = new ApiTokens();
+    //     return $tokens->getApiTokens();
+    // }
+
+    public function setKeys($keyData)
     {
-        $tokens = new ApiTokens();
-        return $tokens->getApiTokens();
+        $this->keys = $keyData;
     }
 
     /**
@@ -30,8 +37,7 @@ class IpstackConnector
     {
         $curl = new CurlHandler();
         //Load key from configuration
-        $keys = $this->getConfig();
-        $accessKey = $keys['ipstack'];
+        $accessKey = $this->keys['ipstack'];
         $address = 'http://api.ipstack.com/' . $ipaddr . '?access_key=' . $accessKey;
         $jsonResponse = $curl->jsonCurl($address);
         return $jsonResponse;

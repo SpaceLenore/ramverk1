@@ -5,8 +5,6 @@ namespace Anax\IpController;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
-use Anax\Connectors\IpstackConnector;
-
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
 // use Anax\Route\Exception\InternalErrorException;
@@ -43,7 +41,7 @@ class IpGeoWebController implements ContainerInjectableInterface
     {
         // Use to initialise member variables.
         $this->db = "active";
-        $this->ipstack = new IpstackConnector();
+        $this->ipstack = $this->di->get('ipStackConnector');
     }
 
 
