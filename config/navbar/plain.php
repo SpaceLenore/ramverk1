@@ -39,6 +39,16 @@ return [
             "title" => "Geo data API",
         ],
         [
+            "text" => "Weather",
+            "url" => "weather",
+            "title" => "Väderdata",
+        ],
+        [
+            "text" => "Weather API",
+            "url" => "weather/api",
+            "title" => "Väderdata API",
+        ],
+        [
             "text" => "Om",
             "url" => "om",
             "title" => "Om denna webbplats.",

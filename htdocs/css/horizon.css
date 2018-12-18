@@ -161,6 +161,17 @@ pre {
   background: rgba(46, 204, 113, 0.5);
   border-color: #2ecc71;
 }
+.weather-display {
+  display: flex;
+  flex: flex-grow;
+  flex-wrap: wrap;
+}
+.weather-display .daybox {
+  width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
 .block {
   padding: 0.5rem;
 }

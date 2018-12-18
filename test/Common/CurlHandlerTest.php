@@ -45,4 +45,19 @@ class CurlHandlerTest extends TestCase
 
         $this->assertFalse($res);
     }
+
+    public function testMultiCurl()
+    {
+        $res = $this->curlHandler->multiCurl(
+            [
+                'http://www.student.bth.se/~vite17/dbwebb-kurser/ramverk1/me/redovisa/htdocs/ip-api',
+                'http://www.student.bth.se/~vite17/dbwebb-kurser/ramverk1/me/redovisa/htdocs/ip-api',
+                'http://www.student.bth.se/~vite17/dbwebb-kurser/ramverk1/me/redovisa/htdocs/ip-api'
+            ]
+        );
+        $exp = [
+            null,null,null
+        ];
+        $this->assertEquals($exp, $res);
+    }
 }
