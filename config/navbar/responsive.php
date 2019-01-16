@@ -65,14 +65,14 @@ return [
             "title" => "Väderdata API",
         ],
         [
+            "text" => "Books",
+            "url" => "book",
+            "title" => "Lista med böcker",
+        ],
+        [
             "text" => "Om",
             "url" => "om",
             "title" => "Om denna webbplats.",
-        ],
-        [
-            "text" => "Verktyg",
-            "url" => "verktyg",
-            "title" => "Verktyg och möjligheter för utveckling.",
         ],
     ],
 ];
